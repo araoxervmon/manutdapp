@@ -1,8 +1,5 @@
-//Demo of Searching Sorting and Pagination of Table with AngularJS - Advance Example
-
 var myApp = angular.module('myApp', []);
 
-//Not Necessary to Create Service, Same can be done in COntroller also as method like add() method
 myApp.service('filteredListService', function () {
 
     this.searched = function (valLists, toSearch) {
@@ -27,7 +24,6 @@ myApp.service('filteredListService', function () {
     };
 
 });
-//Inject Custom Service Created by us and Global service $filter. This is one way of specifying dependency Injection
 var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filteredListService) {
 
     $scope.pageSize = 11;
@@ -36,9 +32,6 @@ var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filtere
 
     $scope.resetAll = function () {
         $scope.filteredList = $scope.allItems;
-        $scope.newEmpId = '';
-        $scope.newName = '';
-        $scope.newEmail = '';
         $scope.searchText = '';
         $scope.currentPage = 0;
         $scope.Header = ['', '', ''];
@@ -97,7 +90,7 @@ var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filtere
         if ($scope.reverse) iconName = 'glyphicon glyphicon-chevron-up';
         else iconName = 'glyphicon glyphicon-chevron-down';
 
-        if (sortBy === 'EmpId') {
+        if (sortBy === 'homeTeam') {
             $scope.Header[0] = iconName;
         } else if (sortBy === 'name') {
             $scope.Header[1] = iconName;
@@ -110,14 +103,13 @@ var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filtere
         $scope.pagination();
     };
 
-    //By Default sort ny Name
     $scope.sort('name');
 
 });
 
 function searchUtil(item, toSearch) {
     /* Search Text in all 3 fields */
-    return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.nationality.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.position == toSearch) ? true : false;
+    return (item.homeTeam.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.awayTeam.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.goalsHomeTeam == toSearch || item.goalsAwayTeam == toSearch) ? true : false;
 }
 /*Get Player Data*/
 function getPlayerData() {
@@ -133,6 +125,7 @@ function getPlayerData() {
   return jqxhr.responseJSON.fixtures;
 }
 
+//redirect
 var ExampleController = myApp.controller('ExampleController', ['$scope', '$location',function($scope, $location){ 
 	$scope.goAboutus = function (hash) { 
 		window.location = './aboutus.php';

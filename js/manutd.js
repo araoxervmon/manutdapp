@@ -32,9 +32,6 @@ var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filtere
 
     $scope.resetAll = function () {
         $scope.filteredList = $scope.allItems;
-        $scope.newEmpId = '';
-        $scope.newName = '';
-        $scope.newEmail = '';
         $scope.searchText = '';
         $scope.currentPage = 0;
         $scope.Header = ['', '', ''];
@@ -93,7 +90,7 @@ var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filtere
         if ($scope.reverse) iconName = 'glyphicon glyphicon-chevron-up';
         else iconName = 'glyphicon glyphicon-chevron-down';
 
-        if (sortBy === 'EmpId') {
+        if (sortBy === 'playerName') {
             $scope.Header[0] = iconName;
         } else if (sortBy === 'name') {
             $scope.Header[1] = iconName;
@@ -105,15 +102,13 @@ var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filtere
 
         $scope.pagination();
     };
-
-    //By Default sort ny Name
     $scope.sort('name');
 
 });
 
 function searchUtil(item, toSearch) {
     /* Search Text in all 3 fields */
-    return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.nationality.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.position == toSearch) ? true : false;
+    return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.nationality.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.position.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 ) ? true : false;
 }
 /*Get Player Data*/
 function getPlayerData() {
@@ -129,6 +124,7 @@ function getPlayerData() {
   return jqxhr.responseJSON.players;
 }
 
+//redirect
 var ExampleController = myApp.controller('ExampleController', ['$scope', '$location',function($scope, $location){ 
 	$scope.goAboutus = function (hash) { 
 		window.location = './aboutus.php';

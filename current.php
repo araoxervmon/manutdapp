@@ -22,7 +22,7 @@
 				<table class="table  table-bordered table-hover data-table myTable">
 					<thead>
 						<tr>
-							<th class="EmpId"> <a href="#" ng-click="sort('EmpId',$event)">Position
+							<th class="position"> <a href="#" ng-click="sort('position',$event)">Position
 								 <span class="{{Header[0]}}"></span>
 								 </a>
 
