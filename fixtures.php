@@ -9,14 +9,7 @@
 <link rel="shortcut icon" href="img/favicon.ico">
 <div ng-app="myApp" >
 	<div class="row">
-	  <div class="col-md-4">
-		<ul><img class="logo_1024" src="img/manutd.jpg"></ul><br>
-		<ul><div class="btn-group-vertical" role="group">
-			<button class="btn btn-large btn-success" type="button" ng-click="$parent.setUrl()">About Manutd</button><br>
-			<button class="btn btn-large btn-primary" type="button">Manutd 2014 Fixtures</button><br>
-			<button class="btn btn-large btn-danger" type="button">Current EPL standings</button><br>
-		</div></ul>
-	  </div>
+	  <? include('sidebar.php'); ?>
 	  <div class="col-md-8">
 		<div ng-controller="TableCtrl">
 			<div class="container-fluid">

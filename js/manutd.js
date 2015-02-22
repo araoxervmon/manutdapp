@@ -1,8 +1,5 @@
-//Demo of Searching Sorting and Pagination of Table with AngularJS - Advance Example
-
 var myApp = angular.module('myApp', []);
 
-//Not Necessary to Create Service, Same can be done in COntroller also as method like add() method
 myApp.service('filteredListService', function () {
 
     this.searched = function (valLists, toSearch) {
@@ -27,7 +24,6 @@ myApp.service('filteredListService', function () {
     };
 
 });
-//Inject Custom Service Created by us and Global service $filter. This is one way of specifying dependency Injection
 var TableCtrl = myApp.controller('TableCtrl', function ($scope, $filter, filteredListService) {
 
     $scope.pageSize = 11;
@@ -132,3 +128,17 @@ function getPlayerData() {
   });
   return jqxhr.responseJSON.players;
 }
+
+var ExampleController = myApp.controller('ExampleController', ['$scope', '$location',function($scope, $location){ 
+	$scope.goAboutus = function (hash) { 
+		window.location = './aboutus.php';
+	}
+	$scope.fixtures = function (hash) { 
+		window.location = './fixtures.php';
+	}
+	$scope.current = function (hash) { 
+		window.location = './current.php';
+	}
+	
+}]);
+

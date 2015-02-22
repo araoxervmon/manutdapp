@@ -132,3 +132,16 @@ function getPlayerData() {
   });
   return jqxhr.responseJSON.fixtures;
 }
+
+var ExampleController = myApp.controller('ExampleController', ['$scope', '$location',function($scope, $location){ 
+	$scope.goAboutus = function (hash) { 
+		window.location = './aboutus.php';
+	}
+	$scope.fixtures = function (hash) { 
+		window.location = './fixtures.php';
+	}
+	$scope.current = function (hash) { 
+		window.location = './current.php';
+	}
+	
+}]);
